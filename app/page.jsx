@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { VIDEOS, CATEGORIES, SITE_NAME, extractEmbedSrc, isEmbedUrl, proxiedEmbed } from "../lib/videos";
+import { VIDEOS, CATEGORIES, SITE_NAME, extractEmbedSrc, isEmbedUrl } from "../lib/videos";
 
 function thumbColor(i) {
   const colors = ["#ff2d55", "#7c5cff", "#00c2a8", "#ff8a00", "#2d9cff"];
@@ -149,7 +149,7 @@ export default function Home() {
               {open.hostedUrl ? (
                 <video src={open.hostedUrl} controls style={{ width: "100%", height: "100%" }} />
               ) : open.embed ? (
-                <iframe src={proxiedEmbed(open.embed)} allowFullScreen allow="autoplay; fullscreen" title={open.title} />
+                <iframe src={open.embed} allowFullScreen allow="autoplay; fullscreen" title={open.title} />
               ) : (
                 <div style={{ padding: 20 }}>
                   <p style={{ color: "#bbb" }}>Is slot ka embed abhi add nahi hua.</p>
