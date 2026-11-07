@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { VIDEOS, proxiedEmbed } from "../../../lib/videos";
+import { VIDEOS } from "../../../lib/videos";
 
 export function generateStaticParams() {
   return VIDEOS.map((v) => ({ slug: v.slug }));
@@ -23,7 +23,7 @@ export default function VideoPage({ params }) {
       <p style={{ color: "#9a9aa8" }}>{v.category} • {v.views} views • {v.source}</p>
       <div className="player" style={{ marginTop: 16 }}>
         {v.embed ? (
-          <iframe src={proxiedEmbed(v.embed)} allowFullScreen allow="autoplay; fullscreen" title={v.title} />
+          <iframe src={v.embed} allowFullScreen allow="autoplay; fullscreen" title={v.title} />
         ) : (
           <div style={{ padding: 20 }}>
             <p style={{ color: "#bbb" }}>Embed not added yet for this video.</p>
